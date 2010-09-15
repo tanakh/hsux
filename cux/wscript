@@ -1,0 +1,23 @@
+
+APPNAME = 'cux'
+VERSION = '0.0.6'
+
+srcdir = '.'
+blddir = 'build'
+
+def set_options(opt):
+    opt.tool_options('compiler_cxx')
+
+def configure(conf):
+    conf.check_tool('compiler_cxx')
+    conf.check_cxx(lib = 'ux')
+
+def build(bld):
+    bld(features = 'cxx cshlib',
+        sources = 'ux_trie.cpp',
+        target = 'cux',
+        includes = '.',
+        uselib = 'UX')
+
+def shutdown(ctx):
+    pass
